@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/transcript.py": {
+      "maxDuration": 60,
+      "memory": 1024
+    }
+  }
+}

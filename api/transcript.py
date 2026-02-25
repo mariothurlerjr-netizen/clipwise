@@ -29,7 +29,8 @@ class handler(BaseHTTPRequestHandler):
         try:
             import yt_dlp
 
-            # Use yt-dlp to get authenticated caption URLs
+            # Use yt-dlp with 'mediaconnect' player client to bypass
+            # YouTube bot detection on datacenter IPs (Vercel, AWS, etc.)
             ydl_opts = {
                 'skip_download': True,
                 'writesubtitles': True,
@@ -38,6 +39,11 @@ class handler(BaseHTTPRequestHandler):
                 'subtitlesformat': 'json3',
                 'quiet': True,
                 'no_warnings': True,
+                'extractor_args': {
+                    'youtube': {
+                        'player_client': ['mediaconnect'],
+                    }
+                },
             }
 
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
