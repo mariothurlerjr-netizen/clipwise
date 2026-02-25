@@ -1,31 +1,11 @@
 // ClipWise — Landing Page (SEO optimized)
 // src/app/(marketing)/page.tsx
 
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'ClipWise — AI YouTube Transcription & Smart Summaries',
-  description: 'Transcribe any YouTube video in seconds. Get AI-powered summaries, timestamps, and key insights. Supports 100+ languages. Start free.',
-  keywords: ['youtube transcription', 'video to text', 'ai summary', 'youtube transcript', 'video summarizer', 'transcribe youtube'],
-  openGraph: {
-    title: 'ClipWise — AI YouTube Transcription & Smart Summaries',
-    description: 'Transcribe any YouTube video in seconds. Get AI-powered summaries with key insights.',
-    type: 'website',
-    url: 'https://clipwise.ai',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ClipWise — AI YouTube Transcription & Smart Summaries',
-    description: 'Transcribe any YouTube video in seconds with AI-powered summaries.',
-  },
-  alternates: {
-    languages: {
-      'en': '/en',
-      'pt-BR': '/pt',
-    },
-  },
-}
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function LandingPage() {
   return (
@@ -42,6 +22,17 @@ export default function LandingPage() {
 
 // ── Hero Section ──────────────────────────────────────────────
 function HeroSection() {
+  const [url, setUrl] = useState('')
+  const router = useRouter()
+
+  function handleTranscribe() {
+    if (url.trim()) {
+      router.push(`/dashboard?url=${encodeURIComponent(url.trim())}`)
+    } else {
+      router.push('/dashboard')
+    }
+  }
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
@@ -64,11 +55,17 @@ function HeroSection() {
             <div className="flex-1 relative">
               <input
                 type="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleTranscribe()}
                 placeholder="Paste YouTube URL here..."
                 className="w-full rounded-xl border-0 bg-white/10 backdrop-blur px-6 py-4 text-white placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 text-lg"
               />
             </div>
-            <button className="rounded-xl bg-purple-600 px-8 py-4 text-lg font-semibold text-white hover:bg-purple-500 transition-colors whitespace-nowrap">
+            <button
+              onClick={handleTranscribe}
+              className="rounded-xl bg-purple-600 px-8 py-4 text-lg font-semibold text-white hover:bg-purple-500 transition-colors whitespace-nowrap"
+            >
               Transcribe Free
             </button>
           </div>
@@ -79,9 +76,9 @@ function HeroSection() {
 
           {/* Social proof */}
           <div className="mt-12 flex items-center justify-center gap-8 text-sm text-gray-400">
-            <span>⚡ 50,000+ videos transcribed</span>
-            <span>🌍 100+ languages</span>
-            <span>⭐ 4.9/5 rating</span>
+            <span>50,000+ videos transcribed</span>
+            <span>100+ languages</span>
+            <span>4.9/5 rating</span>
           </div>
         </div>
       </div>
@@ -126,12 +123,12 @@ function HowItWorks() {
 // ── Features ──────────────────────────────────────────────────
 function FeaturesSection() {
   const features = [
-    { icon: '🎯', title: 'AI Smart Summaries', desc: 'Not just transcription — get executive summaries, key takeaways, and actionable insights from every video.' },
-    { icon: '⏱️', title: 'Timestamps', desc: 'Navigate directly to the moments that matter with precise timestamps throughout the transcript.' },
-    { icon: '🌍', title: '100+ Languages', desc: 'Auto-detect and transcribe videos in Portuguese, English, Spanish, French, and 100+ more languages.' },
-    { icon: '📊', title: 'Video History', desc: 'All your transcriptions saved in one place. Search, filter, and revisit anytime from your dashboard.' },
-    { icon: '🔔', title: 'Channel Monitor', desc: 'Subscribe to YouTube channels and get auto-transcriptions of new videos delivered to your inbox.' },
-    { icon: '📤', title: 'Export Anywhere', desc: 'Download as PDF, TXT, or DOCX. Send to Notion, Google Docs, or your email with one click.' },
+    { title: 'AI Smart Summaries', desc: 'Not just transcription — get executive summaries, key takeaways, and actionable insights from every video.' },
+    { title: 'Timestamps', desc: 'Navigate directly to the moments that matter with precise timestamps throughout the transcript.' },
+    { title: '100+ Languages', desc: 'Auto-detect and transcribe videos in Portuguese, English, Spanish, French, and 100+ more languages.' },
+    { title: 'Video History', desc: 'All your transcriptions saved in one place. Search, filter, and revisit anytime from your dashboard.' },
+    { title: 'Channel Monitor', desc: 'Subscribe to YouTube channels and get auto-transcriptions of new videos delivered to your inbox.' },
+    { title: 'Export Anywhere', desc: 'Download as PDF, TXT, or DOCX. Send to Notion, Google Docs, or your email with one click.' },
   ]
 
   return (
@@ -144,8 +141,7 @@ function FeaturesSection() {
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
             <div key={f.title} className="rounded-2xl bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="text-3xl">{f.icon}</div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-900">{f.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-900">{f.title}</h3>
               <p className="mt-2 text-gray-600">{f.desc}</p>
             </div>
           ))}
@@ -225,19 +221,20 @@ function PricingSection() {
               <ul className="mt-8 space-y-3">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm">
-                    <span>✓</span> {f}
+                    <span>-</span> {f}
                   </li>
                 ))}
               </ul>
-              <button
-                className={`mt-8 w-full rounded-xl py-3 font-semibold transition-colors ${
+              <Link
+                href="/dashboard"
+                className={`mt-8 block w-full rounded-xl py-3 font-semibold transition-colors text-center ${
                   plan.popular
                     ? 'bg-white text-purple-600 hover:bg-gray-100'
                     : 'bg-purple-600 text-white hover:bg-purple-500'
                 }`}
               >
                 {plan.cta}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -294,9 +291,12 @@ function CTASection() {
           Join thousands of creators, researchers, and professionals who save
           hours every week with ClipWise.
         </p>
-        <button className="mt-10 rounded-xl bg-white px-10 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100 transition-colors">
+        <Link
+          href="/dashboard"
+          className="mt-10 inline-block rounded-xl bg-white px-10 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100 transition-colors"
+        >
           Start Free — No Credit Card Required
-        </button>
+        </Link>
       </div>
     </section>
   )
