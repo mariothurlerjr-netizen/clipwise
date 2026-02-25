@@ -85,10 +85,15 @@ export async function POST(req: NextRequest) {
 
     // Generate AI summary (if requested and API key available)
     let summary = null
-    const apiKey = process.env.ANTHROPIC_API_KEY
-    if (withSummary && plainText && apiKey && apiKey !== 'placeholder') {
+    const geminiKey = process.env.GEMINI_API_KEY
+    const anthropicKey = process.env.ANTHROPIC_API_KEY
+    if (withSummary && plainText) {
       try {
-        summary = await generateSummary(plainText, { title, channel }, apiKey)
+        if (geminiKey && geminiKey !== 'placeholder') {
+          summary = await generateSummaryGemini(plainText, { title, channel }, geminiKey)
+        } else if (anthropicKey && anthropicKey !== 'placeholder') {
+          summary = await generateSummary(plainText, { title, channel }, anthropicKey)
+        }
       } catch (e) {
         console.error('Summary generation failed:', e)
       }
@@ -323,6 +328,48 @@ function decodeHtmlEntities(str: string): string {
     .replace(/&#x27;/g, "'")
     .replace(/&nbsp;/g, ' ')
     .replace(/&#(\d+);/g, (_m, code) => String.fromCharCode(parseInt(code)))
+}
+
+async function generateSummaryGemini(text: string, metadata: any, apiKey: string): Promise<string> {
+  const prompt = `Analyze this YouTube video transcript and create a structured summary.
+
+VIDEO: "${metadata.title}" by ${metadata.channel}
+
+INSTRUCTIONS:
+1. Detect the transcript language and write the summary in THE SAME language
+2. Use this format:
+
+## Key Takeaways
+(3-5 bullet points with the most important insights)
+
+## Summary
+(Organized by topics discussed in the video)
+
+## Notable Quotes
+(Any memorable or impactful statements)
+
+TRANSCRIPT (first 30000 chars):
+${text.slice(0, 30000)}`
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { maxOutputTokens: 2048 },
+      }),
+    },
+  )
+
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`Gemini API error: ${res.status} - ${err}`)
+  }
+
+  const data = await res.json()
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || ''
 }
 
 async function generateSummary(text: string, metadata: any, apiKey: string): Promise<string> {
