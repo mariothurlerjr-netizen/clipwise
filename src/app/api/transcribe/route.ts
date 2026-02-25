@@ -9,19 +9,19 @@ export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
   try {
-    const { videoUrl, withSummary = true } = await req.json()
+    const { videoUrl, clientTranscript, withSummary = true } = await req.json()
 
-    if (!videoUrl) {
-      return NextResponse.json({ error: 'videoUrl is required' }, { status: 400 })
+    if (!videoUrl && !clientTranscript) {
+      return NextResponse.json({ error: 'videoUrl or clientTranscript is required' }, { status: 400 })
     }
 
-    // 1. Extract video ID
-    const videoId = extractVideoId(videoUrl)
+    // Use client-provided transcript data if available
+    const videoId = clientTranscript?.videoId || extractVideoId(videoUrl)
     if (!videoId) {
       return NextResponse.json({ error: 'Invalid YouTube URL' }, { status: 400 })
     }
 
-    // 2. Authenticate user (optional)
+    // Authenticate user (optional)
     const supabase = createServerClient()
     let userId: string | null = null
 
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       userId = user?.id || null
     }
 
-    // 3. Check credits (if authenticated free user)
+    // Check credits (if authenticated free user)
     if (userId) {
       const { data: profile } = await supabase
         .from('profiles')
@@ -50,45 +50,72 @@ export async function POST(req: NextRequest) {
 
     const startTime = Date.now()
 
-    // 4. Fetch video metadata via oEmbed
-    const metadata = await fetchVideoMetadata(videoId)
+    // Get transcript text - either from client or try server-side
+    let plainText: string
+    let timestampedText: string
+    let language: string
+    let title: string
+    let channel: string
 
-    // 5. Fetch transcript using youtube-transcript package
-    const transcript = await fetchTranscript(videoId)
+    if (clientTranscript?.text) {
+      // Client already extracted the transcript
+      plainText = clientTranscript.text
+      timestampedText = clientTranscript.timestamped || ''
+      language = clientTranscript.language || 'auto'
+      title = clientTranscript.title || 'Unknown'
+      channel = clientTranscript.channel || 'Unknown'
+    } else {
+      // Try server-side extraction (may fail on some hosting providers)
+      const metadata = await fetchVideoMetadata(videoId)
+      title = metadata.title
+      channel = metadata.channel
 
-    // 6. Generate AI summary (if requested and API key available)
+      try {
+        const transcript = await fetchTranscript(videoId)
+        plainText = transcript.plainText
+        timestampedText = transcript.timestampedText
+        language = transcript.language
+      } catch (error: any) {
+        return NextResponse.json(
+          { error: error.message, fallbackToClient: true },
+          { status: 422 }
+        )
+      }
+    }
+
+    // Generate AI summary (if requested and API key available)
     let summary = null
     const apiKey = process.env.ANTHROPIC_API_KEY
-    if (withSummary && transcript.plainText && apiKey && apiKey !== 'placeholder') {
+    if (withSummary && plainText && apiKey && apiKey !== 'placeholder') {
       try {
-        summary = await generateSummary(transcript.plainText, metadata, apiKey)
+        summary = await generateSummary(plainText, { title, channel }, apiKey)
       } catch (e) {
         console.error('Summary generation failed:', e)
       }
     }
 
     const processingTime = Date.now() - startTime
+    const wordCount = plainText.split(/\s+/).length
 
-    // 7. Save to database (if authenticated)
+    // Save to database (if authenticated)
     let transcriptionId = null
     if (userId) {
-      const wordCount = transcript.plainText.split(/\s+/).length
       const { data } = await supabase
         .from('transcriptions')
         .insert({
           user_id: userId,
           video_id: videoId,
           video_url: videoUrl,
-          title: metadata.title,
-          channel_name: metadata.channel,
-          duration_seconds: metadata.duration,
+          title,
+          channel_name: channel,
+          duration_seconds: 0,
           thumbnail_url: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-          transcript_text: transcript.plainText,
-          transcript_timestamped: transcript.timestampedText,
-          transcript_language: transcript.language,
+          transcript_text: plainText,
+          transcript_timestamped: timestampedText,
+          transcript_language: language,
           is_auto_generated: true,
           word_count: wordCount,
-          summary: summary,
+          summary,
           status: 'completed',
           processing_time_ms: processingTime,
         })
@@ -115,13 +142,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       id: transcriptionId,
       videoId,
-      metadata,
+      metadata: { title, channel },
       transcript: {
-        text: transcript.plainText,
-        timestamped: transcript.timestampedText,
-        language: transcript.language,
-        isGenerated: true,
-        wordCount: transcript.plainText.split(/\s+/).length,
+        text: plainText,
+        timestamped: timestampedText,
+        language,
+        wordCount,
       },
       summary,
       processingTimeMs: processingTime,
