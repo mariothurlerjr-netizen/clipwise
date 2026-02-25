@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
 
   try {
     // Fetch transcript from Supadata API
-    const url = `https://api.supadata.ai/v1/youtube/transcript?videoId=${videoId}&text=true`
+    const url = `https://api.supadata.ai/v1/youtube/transcript?videoId=${videoId}`
     const res = await fetch(url, {
       headers: { 'x-api-key': apiKey },
     })
