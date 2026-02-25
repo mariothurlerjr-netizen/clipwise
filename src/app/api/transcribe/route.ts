@@ -4,7 +4,6 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase'
-import { YoutubeTranscript } from 'youtube-transcript'
 
 export const maxDuration = 60
 
@@ -175,33 +174,129 @@ async function fetchTranscript(videoId: string): Promise<{
   timestampedText: string
   language: string
 }> {
-  try {
-    const segments = await YoutubeTranscript.fetchTranscript(videoId)
+  // Strategy 1: Fetch captions via YouTube's timedtext API (from video page)
+  const videoPageRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    },
+  })
 
-    if (!segments || segments.length === 0) {
-      throw new Error('No transcript segments found')
-    }
-
-    const plainText = segments.map((s: any) => s.text.trim()).filter(Boolean).join(' ')
-
-    const timestampedText = segments
-      .filter((s: any) => s.text.trim())
-      .map((s: any) => {
-        const totalSeconds = Math.floor(s.offset / 1000)
-        const mins = Math.floor(totalSeconds / 60)
-        const secs = totalSeconds % 60
-        return `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}] ${s.text.trim()}`
-      })
-      .join('\n')
-
-    return {
-      plainText,
-      timestampedText,
-      language: 'auto',
-    }
-  } catch (error: any) {
-    throw new Error(`Failed to fetch transcript: ${error.message}. The video may not have subtitles available.`)
+  if (!videoPageRes.ok) {
+    throw new Error('Failed to load YouTube video page')
   }
+
+  const html = await videoPageRes.text()
+
+  // Extract caption tracks from the page HTML
+  const captionMatch = html.match(/"captionTracks":\s*(\[.*?\])/)
+  if (!captionMatch) {
+    // Try alternative: check for playerCaptionsTracklistRenderer
+    const altMatch = html.match(/playerCaptionsTracklistRenderer.*?"captionTracks":\s*(\[.*?\])/)
+    if (!altMatch) {
+      throw new Error('No captions available for this video. The video may not have subtitles.')
+    }
+  }
+
+  const captionTracksJson = captionMatch ? captionMatch[1] : ''
+  let captionTracks: any[]
+
+  try {
+    captionTracks = JSON.parse(captionTracksJson)
+  } catch {
+    throw new Error('Failed to parse caption tracks data')
+  }
+
+  if (!captionTracks || captionTracks.length === 0) {
+    throw new Error('No caption tracks found for this video')
+  }
+
+  // Prefer manual captions, fallback to auto-generated
+  let selectedTrack = captionTracks.find((t: any) => t.kind !== 'asr') || captionTracks[0]
+  const captionUrl = selectedTrack.baseUrl
+
+  if (!captionUrl) {
+    throw new Error('Caption URL not found')
+  }
+
+  // Fetch the actual caption XML
+  const captionRes = await fetch(captionUrl + '&fmt=srv3', {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    },
+  })
+
+  if (!captionRes.ok) {
+    throw new Error('Failed to fetch caption data')
+  }
+
+  const captionXml = await captionRes.text()
+
+  // Parse XML caption segments - format: <p t="startMs" d="durationMs">text</p>
+  // srv3 format uses <p> tags, standard format uses <text> tags
+  const segments: { text: string; offset: number; duration: number }[] = []
+
+  // Try srv3 format first (<p t= d=>) then standard (<text start= dur=>)
+  const srv3Regex = /<p\s+t="(\d+)"\s+d="(\d+)"[^>]*>([\s\S]*?)<\/p>/g
+  const stdRegex = /<text\s+start="([\d.]+)"\s+dur="([\d.]+)"[^>]*>([\s\S]*?)<\/text>/g
+
+  let match
+  let isSrv3 = false
+
+  // Try srv3 first
+  while ((match = srv3Regex.exec(captionXml)) !== null) {
+    isSrv3 = true
+    const offset = parseInt(match[1])
+    const duration = parseInt(match[2])
+    const text = decodeHtmlEntities(match[3].replace(/<[^>]+>/g, '').trim())
+    if (text) {
+      segments.push({ text, offset, duration })
+    }
+  }
+
+  // Fallback to standard format
+  if (!isSrv3) {
+    while ((match = stdRegex.exec(captionXml)) !== null) {
+      const offset = Math.floor(parseFloat(match[1]) * 1000)
+      const duration = Math.floor(parseFloat(match[2]) * 1000)
+      const text = decodeHtmlEntities(match[3].replace(/<[^>]+>/g, '').trim())
+      if (text) {
+        segments.push({ text, offset, duration })
+      }
+    }
+  }
+
+  if (segments.length === 0) {
+    throw new Error('No transcript segments could be extracted')
+  }
+
+  const plainText = segments.map(s => s.text).join(' ')
+
+  const timestampedText = segments
+    .map(s => {
+      const totalSeconds = Math.floor(s.offset / 1000)
+      const mins = Math.floor(totalSeconds / 60)
+      const secs = totalSeconds % 60
+      return `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}] ${s.text}`
+    })
+    .join('\n')
+
+  const language = selectedTrack.languageCode || 'auto'
+
+  return { plainText, timestampedText, language }
+}
+
+function decodeHtmlEntities(str: string): string {
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&#(\d+);/g, (_m, code) => String.fromCharCode(parseInt(code)))
 }
 
 async function generateSummary(text: string, metadata: any, apiKey: string): Promise<string> {
