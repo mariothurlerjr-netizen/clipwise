@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Transforme qualquer vídeo do YouTube em",
+    "highlight": "insights acionáveis",
+    "subtitle": "Cole um link. Receba transcrição com resumos inteligentes, pontos-chave e timestamps — em segundos, não horas.",
+    "cta": "Transcrever Grátis",
+    "noCreditCard": "Sem cartão de crédito · 3 transcrições gratuitas por mês"
+  },
+  "pricing": {
+    "title": "Preços simples e transparentes",
+    "subtitle": "Comece grátis. Faça upgrade quando precisar.",
+    "free": "Grátis",
+    "pro": "Pro",
+    "business": "Business"
+  },
+  "dashboard": {
+    "title": "Transcrever um vídeo",
+    "subtitle": "Cole qualquer URL do YouTube para começar",
+    "history": "Transcrições recentes",
+    "empty": "Nenhuma transcrição ainda"
+  },
+  "auth": {
+    "signIn": "Entre para começar a transcrever",
+    "google": "Continuar com Google",
+    "github": "Continuar com GitHub",
+    "magicLink": "Enviar link mágico",
+    "checkEmail": "Verifique seu email!"
+  }
+}

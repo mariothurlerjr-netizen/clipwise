@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Turn any YouTube video into",
+    "highlight": "actionable insights",
+    "subtitle": "Paste a link. Get an AI-powered transcript with smart summaries, key takeaways, and timestamps — in seconds, not hours.",
+    "cta": "Transcribe Free",
+    "noCreditCard": "No credit card required · 3 free transcriptions per month"
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "Start free. Upgrade when you need more.",
+    "free": "Free",
+    "pro": "Pro",
+    "business": "Business"
+  },
+  "dashboard": {
+    "title": "Transcribe a video",
+    "subtitle": "Paste any YouTube URL to get started",
+    "history": "Recent transcriptions",
+    "empty": "No transcriptions yet"
+  },
+  "auth": {
+    "signIn": "Sign in to start transcribing",
+    "google": "Continue with Google",
+    "github": "Continue with GitHub",
+    "magicLink": "Send magic link",
+    "checkEmail": "Check your email!"
+  }
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipWise — AI YouTube Transcription & Smart Summaries</title>
+    <meta name="description" content="Transcribe any YouTube video in seconds. Get AI-powered summaries, timestamps, and key insights. Supports 100+ languages. Start free.">
+    <meta property="og:title" content="ClipWise — AI YouTube Transcription & Smart Summaries">
+    <meta property="og:description" content="Transcribe any YouTube video in seconds. Get AI-powered summaries with key insights.">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { 500: '#a855f7', 600: '#9333ea', 700: '#7e22ce' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .float { animation: float 3s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- ═══ HERO ═══ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 25%, rgba(168,85,247,.4) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(236,72,153,.3) 0%, transparent 50%)"></div>
+    <nav class="relative max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+        <span class="text-2xl font-bold">✦ ClipWise</span>
+        <div class="hidden sm:flex items-center gap-8 text-sm text-gray-300">
+            <a href="#how-it-works" class="hover:text-white">How it works</a>
+            <a href="#features" class="hover:text-white">Features</a>
+            <a href="#pricing" class="hover:text-white">Pricing</a>
+            <a href="#" class="bg-white/10 backdrop-blur px-5 py-2 rounded-lg hover:bg-white/20">Sign in</a>
+        </div>
+    </nav>
+    <div class="relative max-w-7xl mx-auto px-6 py-20 sm:py-32">
+        <div class="text-center">
+            <div class="inline-block rounded-full bg-purple-500/20 px-4 py-1.5 text-sm text-purple-300 mb-6">
+                🚀 Now with AI Smart Summaries
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+                Turn any YouTube video into<br>
+                <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">actionable insights</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Paste a link. Get an AI-powered transcript with smart summaries,
+                key takeaways, and timestamps — in seconds, not hours.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-xl mx-auto">
+                <input type="url" placeholder="Paste YouTube URL here..." class="w-full sm:flex-1 rounded-xl bg-white/10 backdrop-blur border border-white/20 px-6 py-4 text-white placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 focus:outline-none text-lg">
+                <button class="w-full sm:w-auto rounded-xl bg-purple-600 px-8 py-4 text-lg font-semibold hover:bg-purple-500 transition-all hover:scale-105 whitespace-nowrap shadow-lg shadow-purple-500/25">
+                    Transcribe Free →
+                </button>
+            </div>
+            <p class="mt-4 text-sm text-gray-400">No credit card required · 3 free transcriptions per month</p>
+
+            <div class="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-gray-400">
+                <span>⚡ 50,000+ videos transcribed</span>
+                <span>🌍 100+ languages</span>
+                <span>⭐ 4.9/5 rating</span>
+                <span>🔒 SOC 2 compliant</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section id="how-it-works" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold">How it works</h2>
+            <p class="mt-3 text-lg text-gray-500">Three steps to unlock any video's content</p>
+        </div>
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div class="mx-auto w-20 h-20 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-600 float">1</div>
+                <h3 class="mt-6 text-xl font-semibold">Paste the URL</h3>
+                <p class="mt-2 text-gray-500">Copy any YouTube video link and paste it into ClipWise.</p>
+            </div>
+            <div class="text-center">
+                <div class="mx-auto w-20 h-20 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-600 float" style="animation-delay:.5s">2</div>
+                <h3 class="mt-6 text-xl font-semibold">AI Transcribes</h3>
+                <p class="mt-2 text-gray-500">Our AI extracts the full transcript with precise timestamps.</p>
+            </div>
+            <div class="text-center">
+                <div class="mx-auto w-20 h-20 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-600 float" style="animation-delay:1s">3</div>
+                <h3 class="mt-6 text-xl font-semibold">Get Smart Summary</h3>
+                <p class="mt-2 text-gray-500">Receive an organized summary with key points and insights.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section id="features" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold">Everything you need to master video content</h2>
+        </div>
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">🎯</div>
+                <h3 class="mt-4 text-xl font-semibold">AI Smart Summaries</h3>
+                <p class="mt-2 text-gray-500">Get executive summaries, key takeaways, and actionable insights — not just raw text.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">⏱️</div>
+                <h3 class="mt-4 text-xl font-semibold">Precise Timestamps</h3>
+                <p class="mt-2 text-gray-500">Navigate directly to the moments that matter with clickable timestamps.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">🌍</div>
+                <h3 class="mt-4 text-xl font-semibold">100+ Languages</h3>
+                <p class="mt-2 text-gray-500">Auto-detect and transcribe in Portuguese, English, Spanish, French, and many more.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">📊</div>
+                <h3 class="mt-4 text-xl font-semibold">Video History</h3>
+                <p class="mt-2 text-gray-500">All your transcriptions saved in one place. Search, filter, and revisit anytime.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">🔔</div>
+                <h3 class="mt-4 text-xl font-semibold">Channel Monitor</h3>
+                <p class="mt-2 text-gray-500">Subscribe to YouTube channels and get auto-transcriptions of new videos.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="text-4xl">📤</div>
+                <h3 class="mt-4 text-xl font-semibold">Export Anywhere</h3>
+                <p class="mt-2 text-gray-500">Download as PDF, TXT, or DOCX. Send to Notion, Google Docs, or your email.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold">Simple, transparent pricing</h2>
+            <p class="mt-3 text-lg text-gray-500">Start free. Upgrade when you need more.</p>
+        </div>
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
+            <!-- Free -->
+            <div class="rounded-2xl bg-gray-50 p-8 border border-gray-200">
+                <h3 class="text-2xl font-bold">Free</h3>
+                <div class="mt-4"><span class="text-4xl font-bold">$0</span><span class="text-gray-500"> forever</span></div>
+                <p class="mt-2 text-sm text-gray-500">Get started with basic transcriptions</p>
+                <ul class="mt-8 space-y-3 text-sm text-gray-700">
+                    <li class="flex items-center gap-2">✓ 3 videos/month</li>
+                    <li class="flex items-center gap-2">✓ Basic transcription</li>
+                    <li class="flex items-center gap-2">✓ Text export (TXT)</li>
+                    <li class="flex items-center gap-2">✓ Community support</li>
+                </ul>
+                <button class="mt-8 w-full rounded-xl bg-gray-900 py-3 text-white font-semibold hover:bg-gray-800 transition-colors">Start Free</button>
+            </div>
+
+            <!-- Pro -->
+            <div class="rounded-2xl bg-purple-600 p-8 text-white ring-4 ring-purple-600 ring-offset-2 scale-105 shadow-xl">
+                <span class="inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700 mb-4">Most Popular</span>
+                <h3 class="text-2xl font-bold">Pro</h3>
+                <div class="mt-4"><span class="text-4xl font-bold">$9</span><span class="text-purple-200"> /month</span></div>
+                <p class="mt-2 text-sm text-purple-200">For content creators and researchers</p>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li class="flex items-center gap-2">✓ 50 videos/month</li>
+                    <li class="flex items-center gap-2">✓ AI Smart Summaries</li>
+                    <li class="flex items-center gap-2">✓ Timestamps</li>
+                    <li class="flex items-center gap-2">✓ Export PDF/DOCX/TXT</li>
+                    <li class="flex items-center gap-2">✓ Video history</li>
+                    <li class="flex items-center gap-2">✓ Priority support</li>
+                </ul>
+                <button class="mt-8 w-full rounded-xl bg-white py-3 text-purple-700 font-semibold hover:bg-gray-100 transition-colors">Start 7-day Free Trial</button>
+            </div>
+
+            <!-- Business -->
+            <div class="rounded-2xl bg-gray-50 p-8 border border-gray-200">
+                <h3 class="text-2xl font-bold">Business</h3>
+                <div class="mt-4"><span class="text-4xl font-bold">$29</span><span class="text-gray-500"> /month</span></div>
+                <p class="mt-2 text-sm text-gray-500">For teams and power users</p>
+                <ul class="mt-8 space-y-3 text-sm text-gray-700">
+                    <li class="flex items-center gap-2">✓ Unlimited videos</li>
+                    <li class="flex items-center gap-2">✓ Everything in Pro</li>
+                    <li class="flex items-center gap-2">✓ Channel monitoring</li>
+                    <li class="flex items-center gap-2">✓ Email/Telegram alerts</li>
+                    <li class="flex items-center gap-2">✓ API access</li>
+                    <li class="flex items-center gap-2">✓ Dedicated support</li>
+                </ul>
+                <button class="mt-8 w-full rounded-xl bg-gray-900 py-3 text-white font-semibold hover:bg-gray-800 transition-colors">Start 7-day Free Trial</button>
+            </div>
+        </div>
+        <p class="mt-8 text-center text-sm text-gray-400">
+            All prices in USD. Also available in BRL via Mercado Pago. Cancel anytime. 7-day money-back guarantee.
+        </p>
+    </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-center">Loved by creators and researchers</h2>
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-center gap-1 text-yellow-400 text-lg">★★★★★</div>
+                <p class="mt-4 text-gray-600 italic">"ClipWise saves me hours every week. I use it to research video content and the AI summaries are incredibly accurate."</p>
+                <div class="mt-6">
+                    <p class="font-semibold">Sarah K.</p>
+                    <p class="text-sm text-gray-500">Content Creator</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-center gap-1 text-yellow-400 text-lg">★★★★★</div>
+                <p class="mt-4 text-gray-600 italic">"I monitor 15 YouTube channels for my PhD research. The auto-transcription feature is a game-changer."</p>
+                <div class="mt-6">
+                    <p class="font-semibold">Pedro M.</p>
+                    <p class="text-sm text-gray-500">PhD Researcher</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                <div class="flex items-center gap-1 text-yellow-400 text-lg">★★★★★</div>
+                <p class="mt-4 text-gray-600 italic">"We transcribe competitor videos and extract key messaging. The multilingual support is fantastic for our global team."</p>
+                <div class="mt-6">
+                    <p class="font-semibold">Alex T.</p>
+                    <p class="text-sm text-gray-500">Marketing Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="py-24 bg-gradient-to-br from-purple-600 to-purple-800 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl sm:text-5xl font-bold">Stop watching. Start reading.</h2>
+        <p class="mt-6 text-lg text-purple-200">Join thousands of creators, researchers, and professionals who save hours every week with ClipWise.</p>
+        <button class="mt-10 rounded-xl bg-white px-10 py-4 text-lg font-semibold text-purple-700 hover:bg-gray-100 transition-all hover:scale-105 shadow-lg">
+            Start Free — No Credit Card Required
+        </button>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-gray-900 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <div>
+                <span class="text-xl font-bold text-white">✦ ClipWise</span>
+                <p class="mt-3 text-sm">AI-powered YouTube transcription and summarization.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm uppercase tracking-wider">Product</h4>
+                <ul class="mt-4 space-y-2 text-sm">
+                    <li><a href="#features" class="hover:text-white">Features</a></li>
+                    <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+                    <li><a href="#" class="hover:text-white">API</a></li>
+                    <li><a href="#" class="hover:text-white">Changelog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm uppercase tracking-wider">Company</h4>
+                <ul class="mt-4 space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">About</a></li>
+                    <li><a href="#" class="hover:text-white">Blog</a></li>
+                    <li><a href="#" class="hover:text-white">Careers</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white text-sm uppercase tracking-wider">Legal</h4>
+                <ul class="mt-4 space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Privacy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms</a></li>
+                    <li><a href="#" class="hover:text-white">Security</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-sm text-center">
+            &copy; 2026 ClipWise. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,760 @@
+# 🎬 If I Wanted To Become a Millionaire in 2026, I'd Do This With AI
+
+| Info | Detalhe |
+|------|---------|
+| **Canal** | Liam Ottley |
+| **Duração** | 20:59 |
+| **Idioma** | en (auto-gerado) |
+| **Palavras** | 5,284 |
+| **Link** | https://www.youtube.com/watch?v=amvEyw_Qrrw |
+| **Processado em** | 25/02/2026 13:14 |
+
+---
+
+## 📜 Transcrição Completa
+
+```
+[00:00] As we speak, AI is creating a new class
+[00:02] of millionaires. And it's not just the
+[00:03] coders in Silicon Valley. I'm talking
+[00:04] about regular people with no technical
+[00:06] background and zero AI experience
+[00:08] either. And I would know this because
+[00:09] I'm one of them. 2 and a half years ago,
+[00:11] I had no AI experience. And since then,
+[00:13] I've built multiple different AI
+[00:14] businesses that have generated me over
+[00:16] $7 million. I've built AI systems for
+[00:18] some of the world's biggest brands, and
+[00:20] I've built the world's largest AI
+[00:21] business community and channel here on
+[00:23] YouTube. So, in this video, I'm going to
+[00:24] be giving you the exact blueprint to get
+[00:26] rich with AI that I wish I had when I
+[00:28] started. And it's the exact path that
+[00:30] I'd be taking today if I was starting a
+[00:32] game from zero. To make things easy,
+[00:33] we're going to be splitting this path to
+[00:34] a million into three key stages. The
+[00:36] first phase is start, which is about
+[00:38] going from 0 to 10K per month, and
+[00:39] that's all about building an AI side
+[00:41] hustle. The second phase is going to be
+[00:42] scale, where we're going from 10 to 50K
+[00:44] per month. And this is all about
+[00:46] doubling down on what works. And the
+[00:47] third and final phase is expand, which
+[00:49] is from 50K to over $300,000 monthly.
+[00:51] And that's really about becoming an
+[00:53] industry leader. So to start, let's get
+[00:54] one thing straight. And the path to
+[00:56] becoming a millionaire isn't about
+[00:57] saving your way there. That's the slow
+[00:59] road that everyone tells you to take.
+[01:01] But the real path is about radically
+[01:03] increasing your income. Like radically
+[01:05] increasing it. And for 99% of you
+[01:07] watching, that journey is going to start
+[01:08] with one thing, and that is building an
+[01:10] AI side hustle that makes you enough
+[01:12] money to allow you to quit your job and
+[01:14] win your freedom. And this brings us to
+[01:16] phase one of the millionaire plan, which
+[01:17] is start. Your one and only mission in
+[01:19] this phase is to get to that $10,000 per
+[01:21] month mark. This is your freedom number,
+[01:23] you could call it. It's the income that
+[01:25] allows you to let go of your past life
+[01:27] and go all in on building your dream
+[01:29] life. And to do this, we need a vehicle,
+[01:31] a a form of business that you can start
+[01:33] on the side that doesn't require a ton
+[01:35] of cash to get started and that
+[01:36] leverages the single biggest trend on
+[01:38] the planet right now, which is why you
+[01:40] clicked on this video, artificial
+[01:42] intelligence. Right now, the fastest and
+[01:43] most direct path to that 10K per month,
+[01:46] is starting a simple oneperson AI
+[01:48] service business, also known as an AI
+[01:50] automation agency. But what does this
+[01:52] actually mean? That might sound a bit
+[01:53] scary to you, but basically it means
+[01:55] that you are going to help businesses to
+[01:57] understand and use AI. You're going to
+[01:59] be their guide. You're going to be
+[02:01] helping them from everything from
+[02:02] training the teams to consulting on
+[02:04] where AI can help them best to actually
+[02:06] building and setting up AI systems for
+[02:08] them. And now, I know what you're
+[02:09] thinking when you hear that. The first
+[02:10] two objections that I always hear when I
+[02:11] mention that are, "But Liam, how can I
+[02:13] sell AI? I'm not technical and I don't
+[02:15] have a computer science degree." And
+[02:17] then secondly, even if I could sell it,
+[02:19] AI is a huge and complex field. How will
+[02:21] I ever know enough to be able to help a
+[02:23] business? I know nothing right now. Give
+[02:24] me a second. I'll just dismantle those
+[02:25] right now because that is the biggest
+[02:27] blocker stopping people from getting
+[02:28] into AI is these misconceptions and
+[02:30] myths around what it really takes to get
+[02:32] in and learn and make money from it. So,
+[02:33] we'll start with the nontechnical bit
+[02:35] first. When I started my journey, I
+[02:36] didn't have a computer science degree. I
+[02:38] didn't have a PhD in AI. I had zero AI
+[02:41] experience. I'm completely selftaught in
+[02:43] my development skills and also my
+[02:44] knowledge of AI. And yet from that
+[02:46] starting point just 2 and a half years
+[02:47] ago, my agency, Morningside AAI, has
+[02:49] gone on to work with some of the world's
+[02:50] biggest brands, including an MBA team,
+[02:52] an NRL team, and even publicly traded
+[02:55] companies. And at this point, across all
+[02:56] my businesses, I'm making over $500,000
+[02:58] per month. If I went from there to
+[03:00] there, then you can definitely go from
+[03:01] where you are to $10,000 per month. The
+[03:04] reason for this is that the game has
+[03:05] changed and that you don't need to be a
+[03:07] developer or a coder anymore. The secret
+[03:09] to getting into AI in this way is using
+[03:11] simple no code tools that allows you to
+[03:13] build basically any powerful AI system
+[03:15] just by dragging and dropping. This is
+[03:16] the first reason why this opportunity of
+[03:18] selling AI to businesses in some form of
+[03:20] an AI automation agency is so massive is
+[03:22] that the door is wide open to it and
+[03:23] anyone can get into it. Okay, so now
+[03:25] let's deal with the second one about AI
+[03:26] being too much for you to comprehend or
+[03:27] learn in a short amount of time. to
+[03:29] where the real secrets of how people are
+[03:30] getting into AI lies. And it's that yes,
+[03:32] the AI universe is massive. At my
+[03:34] agency, Morningside, we are a general AI
+[03:37] development agency. We can build almost
+[03:38] anything that our clients want. But
+[03:40] that's a very, very tough game to play.
+[03:41] It requires a big team of expert
+[03:43] developers who know everything, the
+[03:45] whole AI space. But for a oneperson AI
+[03:48] services business, you want to play a
+[03:49] much smarter game than that. And that's
+[03:50] called becoming a niched AI agency. Your
+[03:52] mission here isn't to conquer the whole
+[03:54] AI universe. It's to just become an
+[03:56] expert in one of the tiny and valuable
+[03:58] hotspots that are popping up right now.
+[04:00] This is the core of the strategy I'm
+[04:01] about to give you to get this AI side
+[04:03] hustle off the ground. And I call it the
+[04:04] AI solarreneurs blueprint. So to put
+[04:06] this together, I've done all of the hard
+[04:07] work and distilled everything into a
+[04:09] simple and repeatable formula that
+[04:10] answers the three questions that every
+[04:12] beginner has when they're trying to
+[04:13] start one of these businesses, which is
+[04:15] what do I sell, who do I sell it to, and
+[04:17] then how do I get my clients? So to keep
+[04:19] this video from being hours and hours
+[04:20] long, I'm going to give you the highle
+[04:22] strategy here in this video on how to
+[04:23] get this off the ground. But just so you
+[04:25] know, I've created a complete 40 plus
+[04:26] page guide that breaks down every single
+[04:28] step on the way to getting this off the
+[04:29] ground, including tutorials and
+[04:30] templates. And I'll tell you how you can
+[04:32] get access to that for free at the end.
+[04:33] So, starting off, what do I sell? This
+[04:35] is the most common question that I get.
+[04:36] So, I've made it super simple for you
+[04:37] guys. I have dug through all of the data
+[04:39] from my community and from my own agency
+[04:41] as well. And I've whittleled it down to
+[04:42] just four of the most in demand beginner
+[04:44] friendly AI systems that almost any
+[04:46] business needs right now. So, these may
+[04:48] sound scary as I go through them, but in
+[04:50] the free guide that comes with it, you
+[04:51] will have links to step-by-step
+[04:52] tutorials on how to build each of them
+[04:54] using no code tools, so there's no
+[04:55] excuse why you can't get in there and
+[04:57] get your hands dirty and start to build
+[04:58] them. So, the first one is a speed to
+[04:59] lead system. This is a simple automation
+[05:01] that ensures that the business responds
+[05:02] to any new customer inquiry or people
+[05:04] reaching out to them in seconds, not
+[05:06] hours. This is incredibly powerful when
+[05:08] set up correctly because most deals go
+[05:10] to the personal business who responds
+[05:12] first. The second proven system is a
+[05:13] WhatsApp or SMS booking agent. This is
+[05:15] you can think of kind of like your local
+[05:17] barber or restaurant where they might
+[05:18] want to have something that allows
+[05:20] customers to book or make appointments
+[05:21] or reservations just by texting the
+[05:23] business. So, it's available 24/7 and
+[05:25] that's a massive convenience for the
+[05:27] customers, but it also captures a ton
+[05:29] more business. The third option is a
+[05:30] social media DM agent. So, similar to
+[05:32] the one before, but this is talking
+[05:33] about going onto Instagram or Facebook
+[05:35] where an AI agent can be set up to
+[05:36] answer the common questions people have
+[05:38] to handle any customer support or even
+[05:39] booking appointments. So, this is going
+[05:41] to save business owners, particularly
+[05:42] small business owners, hours and hours
+[05:44] per day. The fourth and final option is
+[05:46] the AI receptionist. And every local
+[05:48] business has a phone number and they
+[05:49] often miss calls all the time because
+[05:51] either the line's busy or they're
+[05:53] asleep. And so this AI receptionist
+[05:54] system answers the phone automatically
+[05:56] for them and handles all the questions
+[05:58] and customer support and can book
+[05:59] appointments automatically so they never
+[06:01] lose a customer again to a missed call.
+[06:03] So those are the four proven AI systems
+[06:04] that basically any business wants right
+[06:05] now. That is what you're going to sell.
+[06:07] All you need to do is follow the
+[06:08] tutorials in the AI solarpreneurs
+[06:09] blueprint that comes with this video and
+[06:11] just see which one clicks with you and
+[06:13] decide that is your thing and that
+[06:14] you're going to master it. That is the
+[06:15] one little area in the AI space that you
+[06:17] need to become an expert in. The next
+[06:18] step is figuring out who we're going to
+[06:19] sell it to. So, we're not going to be
+[06:21] going after tech companies. We're going
+[06:22] to be going after the most AI clueless
+[06:24] businesses that you can find like
+[06:26] plumbers and roofers and contractors and
+[06:28] home cleaners and things like this. And
+[06:29] this is the second reason why this
+[06:31] selling AI services to businesses is
+[06:33] such a huge opportunity. It's that this
+[06:35] is a starving crowd. These businesses
+[06:37] have a massive knowledge gap. They are
+[06:38] years behind when it comes to AI, which
+[06:40] means just the simple system that you
+[06:42] learned how to build before will seem
+[06:44] like magic to them. Like your knowledge
+[06:46] in this one little area will be light
+[06:48] years ahead of where they are. And I
+[06:49] remember my first client for Morningside
+[06:50] was a AI sports betting system that I
+[06:52] built on my laptop while I was still
+[06:54] living in Dubai. And I was terrified. I
+[06:56] felt like a total imposter. But I
+[06:58] realized that I just had to be one step
+[06:59] ahead of them. And that's all you need
+[07:01] to be. And they will happily pay you to
+[07:02] fill that gap. So the final part is how
+[07:04] to get customers. So, the good thing
+[07:05] about this is that you don't need
+[07:06] hundreds. Your entire goal here is just
+[07:08] to get four clients paying you $2,500 a
+[07:10] month. And the fastest way to find these
+[07:12] four clients as a oneperson AI business
+[07:13] is with a simple cold email testing
+[07:15] strategy. This is a distilled system
+[07:17] based on what's working right now for my
+[07:18] members in my AAA accelerator program.
+[07:20] So, here's how it works. You're going to
+[07:21] pick four of those boring and
+[07:23] nontechnical niches that we talked about
+[07:24] before. ET like HVAC or roofing or pest
+[07:27] control or plumbers or home cleaning.
+[07:28] Then, you're going to set up and send a
+[07:30] simple cold email campaign to all four
+[07:32] of those niches offering that one
+[07:33] system. Now, based off the responses
+[07:35] that you get, you're going to see which
+[07:36] niche is responding to which offer with
+[07:38] the most interest. So, maybe plumbers
+[07:40] love the AI receptionists, but the
+[07:41] roofers don't care. So, maybe you test
+[07:43] all the AR receptionists, and you don't
+[07:45] get any responses with those niches you
+[07:46] tested. Okay. Well, I go on to the next
+[07:48] one. I go on to the speeds lead system,
+[07:49] and I test all those niches again. And
+[07:51] eventually, you're going to find one
+[07:52] particular matchup of a offer and a
+[07:54] niche that is far more interested in
+[07:56] responding at a higher rate than the
+[07:57] others. And that is where you go all in.
+[07:59] That mix of niche and offer becomes your
+[08:01] narrow hotspot that you are going to
+[08:02] become an expert in. Now, I know as a
+[08:04] beginner this may sound terrifying. So,
+[08:05] I have included a 20page guide on how to
+[08:07] set up this exact cold email system in
+[08:09] the AI solarpreneurs blueprint that's
+[08:11] included for free with this video. And
+[08:13] on a personal level, this is the part
+[08:14] that truly drives me is because by
+[08:16] starting this journey, you're not just
+[08:18] building a side hustle. You're actually
+[08:19] acquiring the most valuable skills on
+[08:21] the planet. The income from starting
+[08:22] these businesses, of course, amazing,
+[08:24] but the real reward is actually the
+[08:26] confidence and the security that comes
+[08:27] from knowing that you're on the right
+[08:28] path. And I I've felt it myself and I
+[08:30] see it every day in my community. people
+[08:32] are just like happier and more energized
+[08:35] because they know that they're betting
+[08:36] on the right thing and they've shifted
+[08:37] out of something that they think is like
+[08:39] a sinking ship or doesn't really give
+[08:40] them the future prospects that they
+[08:41] want. And that feeling is everything and
+[08:43] that's really why I make these videos to
+[08:45] try to give you guys that feeling. So
+[08:47] that is the plan for phase one. It is
+[08:48] not just a fantasy. It's a simple and
+[08:50] repeatable formula. You learn one
+[08:52] system. You find one niche of clueless
+[08:54] businesses. You get four clients. You
+[08:55] hit your freedom number. Once you've hit
+[08:57] that 10K, you have earned your freedom.
+[08:58] You can quit the job. And now it's time
+[09:00] to go all in on scaling it. Phase two,
+[09:02] scale from 10 to 50K per month. Now you
+[09:05] were in the top 1% of people who
+[09:06] actually take action on these kinds of
+[09:08] videos. So the key thing here is that
+[09:10] when you're working your job, handling
+[09:11] those first four clients probably felt
+[09:12] like a full-time gig in itself. But now
+[09:15] you've just unlocked your most powerful
+[09:16] asset, which is 8 hours a day of your
+[09:19] own time to pour into the business. So
+[09:20] this is where the real work is going to
+[09:21] begin. This is where you get serious.
+[09:23] And that brings us into phase two. So
+[09:25] your priority in this phase is to scale
+[09:27] from 10K per month to $50,000 per month.
+[09:29] And this isn't about finding a new
+[09:30] secret or a new business model. It is
+[09:32] just about operational excellence. You
+[09:34] stop just being a founder trying to get
+[09:36] things and hustling off the ground and
+[09:37] you start being an operator. You take
+[09:39] the one thing that worked and you build
+[09:41] an entire machine around it. And there
+[09:43] are four key levers that you need to
+[09:44] pull in order to make this happen. So
+[09:45] lever number one is master the value
+[09:47] equation and raise your prices. And the
+[09:49] reason you do this is because you are
+[09:50] now fundamentally more valuable. And you
+[09:52] need to understand this to your core.
+[09:54] When it comes to pricing your services,
+[09:55] I have a simple formula that is really,
+[09:57] really important for beginners to
+[09:58] understand. And that is that your value
+[10:00] aka the price you can charge is equal to
+[10:02] your skills times your experience. When
+[10:04] you started with your first client, your
+[10:05] skills might have been maybe 30 out of
+[10:07] 100 in that specific thing that you were
+[10:09] trying to build. And your experience
+[10:10] would have been zero. But as you've
+[10:12] delivered on those clients, now you have
+[10:13] at least four clients under your belt.
+[10:15] You've seen what works and what doesn't.
+[10:17] You understand how to get results for
+[10:19] this kind of business. you're starting
+[10:20] to see patterns and you understand the
+[10:22] business owner's problems at a much
+[10:23] deeper level. And this means you can
+[10:25] offer your new clients a much higher
+[10:27] chance of success and that is what they
+[10:29] are paying you for. You're no longer
+[10:31] just selling a promise of like, oh, I'll
+[10:33] increase your leads by 20%. You are
+[10:35] selling a proven result that you've
+[10:37] taken from your past experience. And so
+[10:39] with this new value, you can now change
+[10:41] your pricing model. Instead of just
+[10:42] going for a monthly retainer, like maybe
+[10:44] 2,500 a month, depending on the system,
+[10:46] you can start to introduce an upfront
+[10:48] setup fee. for example, 5K up front and
+[10:50] then $2,500 a month. This is going to
+[10:52] immediately increase your cash flow and
+[10:54] starts to filter out the tire kickers or
+[10:56] lower value clients from the higher
+[10:57] value ones. Lever number two is to
+[10:59] systemize your proof. So, your
+[11:00] experience that you've just got is
+[11:02] worthless if you can't prove it to other
+[11:04] people. So, your new obsession is to
+[11:05] start turning those past results you've
+[11:07] got into undeniable proof assets that
+[11:09] you can start to plug into your
+[11:11] marketing. So, the first thing you
+[11:12] should do is get testimonials. So reach
+[11:14] out to your first four clients, get
+[11:15] written testimonials, or better yet, get
+[11:17] them on a quick video call or ask them
+[11:19] to record a video testimonial. And this
+[11:21] kind of social proof is going to be gold
+[11:22] and key for you to scale. Secondly, you
+[11:24] need to build case studies. So create a
+[11:26] simple onepage document for each of your
+[11:28] clients. What was the problem? What was
+[11:30] your solution? What was the result? And
+[11:32] use the hard numbers wherever you can.
+[11:34] So as you're going through your client
+[11:35] deliveries, you want to look for things
+[11:36] like we reduced lead response time by
+[11:38] 98% or captured 30% more inbound leads
+[11:42] from their phone line. Thirdly, you want
+[11:43] to start building your brand. So, use
+[11:45] all these assets that we've just got to
+[11:47] start building a simple brand, which is
+[11:49] creating a website or updating it. Start
+[11:51] to post some of these case studies on
+[11:52] your LinkedIn and then start to position
+[11:54] yourself as the expert for the specific
+[11:56] problem that you solve. Level number
+[11:57] three is to scale your acquisition
+[11:59] machine. So, now that you have all of
+[12:00] this proof, you start to pour gasoline
+[12:02] on your client acquisition system. So,
+[12:04] your cold email system is already
+[12:05] working. Now, you need to make it 10
+[12:07] times more powerful by integrating your
+[12:09] new case studies and testimonials
+[12:10] directly into that email copy. Your
+[12:12] outreach is no longer a cold pitch. It's
+[12:14] a confident presentation of the proven
+[12:17] results that you've gotten so far. And
+[12:18] with your extra time that you've gotten
+[12:19] from quitting your job, you can start to
+[12:20] increase the volume of emails that
+[12:22] you're sending and spend more time
+[12:24] refining your scripts, doing split
+[12:25] tests, and taking more sales calls,
+[12:27] which are inevitably going to come from
+[12:28] increasing that volume. Again, this is
+[12:30] what the scale phase is all about. It's
+[12:31] simply doing more of what's working, but
+[12:34] now with a lot better ammunition. And
+[12:35] finally, lever number four is to build
+[12:37] your digital and human team. This is by
+[12:39] far the biggest unlock for you in this
+[12:41] phase where your goal now shifts to
+[12:43] using AI and your first human hires to
+[12:45] automate yourself out of the day-to-day
+[12:46] work so that you can focus on what
+[12:48] actually matters most, which is signing
+[12:50] new deals. So, the first way you can do
+[12:51] this is by setting up a digital team,
+[12:53] aka using AI automation. You need to
+[12:55] start using your AI skills that you're
+[12:57] getting from your client projects on
+[12:58] your own AI business. So, start to look
+[13:00] at your processes. Where are the
+[13:01] bottlenecks? Well, I can tell you where
+[13:02] it's going to be, and that's on things
+[13:04] like proposal generation. Are you
+[13:05] spending hours on preparing proposals to
+[13:07] send to clients? Well, there are tools
+[13:09] like Genpark and their slide agent that
+[13:10] can help you do that fully. Instead of
+[13:12] doing it all by hand, you can start to
+[13:13] take the transcripts from your sales
+[13:15] calls or discovery calls, run it through
+[13:16] Chat GBT to create a proposal outline,
+[13:18] and then feed that into GenSpark to
+[13:20] create a beautiful presentation for your
+[13:22] client in minutes, if not hours. Another
+[13:24] big one you're going to run into is
+[13:25] contract generation. So, doing that same
+[13:27] process again, taking the transcript and
+[13:29] this time putting it into your own
+[13:30] custom AI automation on something like
+[13:32] make.com and getting it to generate you
+[13:34] a ready document that's on something
+[13:35] like Panda Docuign. And another massive
+[13:38] bottleneck is going to be on client
+[13:39] onboarding. So, if you can build an
+[13:40] automation that handles all of these
+[13:42] initial steps for a new client without
+[13:43] you having to do anything, that's going
+[13:45] to be a massive unlock for you and
+[13:46] getting your time back. In the AI
+[13:47] solarreneurs blueprint, I'm going to
+[13:48] include a complete list of all the best
+[13:50] tools for solo founders to build their
+[13:52] digital team um that I use and many
+[13:54] other people in my community use so that
+[13:56] you can get more done with less. So,
+[13:57] aside from using AI automation to build
+[13:59] your digital team, you also can hire
+[14:01] your first human. And for most of you,
+[14:02] this is going to be a technical person,
+[14:04] a developer or an engineer who can
+[14:06] handle the client delivery for you.
+[14:08] Basically replacing you and doing the
+[14:10] setup for your clients. And I know this
+[14:12] may sound scary, but if you do the
+[14:13] maths, a good freelance AI developer
+[14:15] might cost you $6,000 a month. And if
+[14:18] that one hire frees you up to close just
+[14:19] two more deals at your new higher price
+[14:21] point, then they've already paid for
+[14:23] themselves. So this one move allows you
+[14:24] to focus 100% of your time and energy on
+[14:27] sales and growth while your new hire is
+[14:28] handling all of the delivery and client
+[14:30] work themselves. So, as you can tell,
+[14:32] this phase is a grind, but it's a focus
+[14:34] grind. You are not searching for any new
+[14:36] answers really. You're just executing on
+[14:38] a proven model. You're like putting the
+[14:39] hammer down and becoming the undisputed
+[14:42] go-to expert for this one system in this
+[14:44] one niche. Once you've built this
+[14:45] machine and you're consistently hitting
+[14:47] that $50,000 per month mark, firstly,
+[14:49] congratulations. You've built a truly
+[14:51] valuable business. And now, if you're
+[14:52] ready, it's time to build your empire.
+[14:54] Phase three, expand $50,000 to $300,000
+[14:58] or more per month. So, by this point,
+[14:59] you have a proven system, a solid
+[15:01] reputation in your niche, and a small
+[15:02] yet effective team. You've built a truly
+[15:04] valuable business making you $50,000 or
+[15:06] more a month. But now, you are going to
+[15:07] face a whole new set of problems. You're
+[15:09] probably drowning in sales calls. And
+[15:11] your client acquisition with cold email
+[15:13] is likely hitting a ceiling. And so, in
+[15:14] order to break through this and get on
+[15:16] the path to millionaire status, you're
+[15:18] still not making enough money. So, the
+[15:19] priority in this final phase is to build
+[15:20] a multiaceted business that can scale
+[15:22] far beyond your personal time and
+[15:24] effort. This is about diversifying your
+[15:26] revenue and diversifying your client
+[15:28] acquisition in order to build a truly
+[15:30] defensible and actually wealth
+[15:31] generating machine. So there are three
+[15:33] strategic plays that you need to make in
+[15:34] this phase. First one is to delegate
+[15:36] sales and free yourself from the last
+[15:38] bits of agency work. So right now you
+[15:40] are still the bottleneck. You delegated
+[15:42] delivery to your developer but you are
+[15:43] still tied down in those sales calls. In
+[15:45] order to expand the business you must
+[15:47] free yourself from this final
+[15:48] operational task. And so your next hire
+[15:50] is a salesperson. This person's sole job
+[15:52] is to take over the sales calls and
+[15:54] close the deals that your system's now
+[15:55] generating. And this one move again is
+[15:57] going to free up your single most
+[15:59] valuable asset, which is your time, in
+[16:00] order to focus on the highest leverage
+[16:02] activity in the entire business. And
+[16:04] that new job is play number two. Play
+[16:06] number two is all about building your
+[16:07] brand and your own niche. So with your
+[16:09] time freed up from sales and delivery,
+[16:11] your new full-time job is content
+[16:13] creation, like doing this sort of stuff.
+[16:15] So cold email got you to this point, but
+[16:17] it does have a ceiling. And the way you
+[16:18] attract the best clients and command the
+[16:20] highest prices like we do at Morningside
+[16:22] AI and build a real moat around your
+[16:24] business is by becoming the undisputed
+[16:27] go-to authority in your niche. And you
+[16:29] do that by building a personal brand
+[16:30] like I've done over the past 2 and a
+[16:31] half years. And the strategy to do this
+[16:33] is to firstly pick just one platform,
+[16:35] YouTube or LinkedIn. I have seen
+[16:36] incredible results on both. But just do
+[16:38] one and go all in on that. You need to
+[16:40] start sharing everything that you do.
+[16:42] Talk about the results you're getting
+[16:43] for clients. Share the systems you've
+[16:44] built. Share personal updates on what
+[16:47] you're doing. teach the solutions to the
+[16:48] problems that your niche is facing. And
+[16:50] the first step is by talking your
+[16:52] and owning the fact that you are now an
+[16:54] expert in that niche. And this is
+[16:55] exactly what I've done over the past two
+[16:56] and a half years. I've gone from having
+[16:58] basically zero following to nearly a
+[17:00] million across all my platforms. And
+[17:02] that brand is what fuels my entire
+[17:03] ecosystem of AI businesses that's on
+[17:05] track to do over $10 million this year
+[17:07] in revenues. So the personal brand, I
+[17:09] can confidently say, is the single most
+[17:10] powerful asset that you can build that
+[17:12] will actually outlive the business that
+[17:14] you're starting at this point. Your
+[17:15] personal brand is still going to be with
+[17:16] you in 10 20 years potentially. Then
+[17:18] play number three is to increase your
+[17:20] revenue streams. So your personal brand
+[17:21] is going to create a powerful new asset
+[17:23] which is attention and authority. Now
+[17:25] you monetize that attention by expanding
+[17:28] what you can sell. There are two proven
+[17:29] paths that you can take at this point
+[17:30] and it's best that entrepreneurs really
+[17:32] consider doing both. Path A is going
+[17:34] deeper with high ticket services for
+[17:35] your agency. So you're no longer selling
+[17:37] just one narrow AI system. You're now
+[17:39] the trusted guide. Like you know these
+[17:41] businesses inside out. You go from just
+[17:43] being the niche AI automation agency to
+[17:45] the full service AI transformation
+[17:47] partner, which is what we've done at
+[17:48] Morningside AI over the past 9 months.
+[17:50] And the best entry point into expanding
+[17:51] your services as an agency is to offer
+[17:53] what's called an AI audit, where you go
+[17:55] into business in your niche and you
+[17:56] analyze their entire operation, identify
+[17:58] all the opportunities for AI integration
+[18:00] that you see. And not only do you get
+[18:02] paid for that, but then you get paid for
+[18:04] building the things that you identify as
+[18:06] well. So, it's a really great model for
+[18:07] increasing the lifetime value for
+[18:08] customers. I've actually got a whole
+[18:10] video on how we do this at Morningside,
+[18:11] which I'll link down below if you want
+[18:12] to watch. But basically, the AI audit
+[18:14] becomes your entry point to selling a
+[18:16] whole sort of complete AI transformation
+[18:18] package, which includes education such
+[18:20] as training the leadership and their
+[18:21] teams. You have consulting and ongoing
+[18:23] strategic guidance for the businesses
+[18:25] that you work with. And there's also of
+[18:26] course development, which is building
+[18:27] out all the custom AI systems that they
+[18:29] need, which as I said, this dramatically
+[18:31] increases the lifetime value of each
+[18:32] client and positions you as their
+[18:33] indispensable partner for anything they
+[18:35] need AI- wise. Then path B is to go into
+[18:37] info products. And this is the ultimate
+[18:39] revenue multiplier. You take the
+[18:41] expertise of what you've proven in your
+[18:42] agency and you package it into a course
+[18:44] or a training program for your niche. So
+[18:46] you're essentially teaching them like
+[18:47] the the DIY or do it yourself strategy.
+[18:49] You can think of it like AI for roofers
+[18:51] 101 or the ultimate AI operations
+[18:54] playbook for plumbing companies. So,
+[18:55] you're taking all that valuable
+[18:57] knowledge and experience that you've
+[18:58] learned over all of the work you've done
+[18:59] with your clients and you're packaging
+[19:00] it into some kind of info product that
+[19:02] you can sell over and over and over and
+[19:04] over again without having to redeliver
+[19:06] it. Whereas on the agency side, you were
+[19:07] limited by how many clients you can
+[19:09] actually deliver for. The info is only
+[19:11] limited by how many people you can get
+[19:12] interested in buying the info. A perfect
+[19:14] example of this in action is with a guy
+[19:16] called Nate Herk, who was a member of my
+[19:18] AAA accelerator program who I
+[19:19] interviewed recently here on this
+[19:20] channel. And he started exactly where
+[19:22] you are. He had no technical background,
+[19:24] no AI knowledge, but he just started by
+[19:26] building automations of businesses using
+[19:27] the model that I've described here. He
+[19:29] then built a YouTube channel and now he
+[19:31] has an info product business that does
+[19:32] over $200,000 a month from on top of his
+[19:35] agency. So in total, he's making
+[19:37] $300,000 every single month by combining
+[19:39] these two models of services and info.
+[19:42] And that's the final plate. So by
+[19:43] freeing yourself up and delegating the
+[19:45] sales, you get to pour all that time
+[19:46] into building an undeniable personal
+[19:47] brand. And then you can monetize that
+[19:49] brand by going deeper with your high
+[19:51] ticket services and then broader with
+[19:53] scalable info products. So this is the
+[19:55] path that takes you from a six-figure
+[19:57] income to a seven figure net worth. And
+[19:59] this is the guaranteed route to becoming
+[20:01] a millionaire with AI. That's the plan
+[20:03] guys. You have the map, the vehicle, the
+[20:05] route, all the information. Your next
+[20:07] step is super simple. As I promised, the
+[20:09] full AI solarpreneurs guide, which is
+[20:11] over 40 pages detailing exactly how to
+[20:13] go from $0 to $10,000 per month, is in
+[20:15] the first link in the description. And
+[20:17] while you're at it, make sure you also
+[20:18] join my free school community. It's the
+[20:19] largest AI business community in the
+[20:21] world. And when you join, you'll get
+[20:22] access to my free course that's in
+[20:24] there. You'll get live Q&A where you get
+[20:25] to ask questions directly to me. We do
+[20:27] those once a week. And of course, you
+[20:28] can network with over 200,000 people who
+[20:30] are on the exact same journey as you,
+[20:32] trying to use AI to build the life of
+[20:34] their dreams and become a millionaire.
+[20:35] Honestly, it's the single best place on
+[20:36] the planet right now if you're serious
+[20:38] about doing this. And of course, if you
+[20:39] got value from this video, put a lot of
+[20:40] work into it. Make sure you leave a like
+[20:42] and subscribe so you don't miss the next
+[20:43] video where we're going to continue
+[20:44] breaking down how to use AI to build
+[20:46] your dream life. So, if you want to
+[20:48] check out my full video on how to build
+[20:49] a oneperson AI services business like
+[20:51] we've talked about here, that video will
+[20:53] break it all down. But aside from that,
+[20:54] guys, that is all for the video. Thank
+[20:56] you so much for watching and I'll see
+[20:57] you in the next one.
+```
