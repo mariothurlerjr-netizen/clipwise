@@ -24,9 +24,8 @@ interface TranscriptionResult {
 
 // ── YouTube transcript fetcher ───────────────────────────────
 // Uses our Python serverless function (/api/transcript) which uses
-// youtube_transcript_api — the only library that reliably bypasses
-// YouTube's anti-bot measures from server-side.
-// Video metadata comes from our Edge function (/api/yt-page).
+// yt-dlp to get authenticated caption URLs that bypass YouTube IP blocks.
+// The endpoint returns transcript + title + channel in one call.
 
 async function fetchTranscriptClientSide(videoUrl: string): Promise<{
   videoId: string
@@ -41,40 +40,23 @@ async function fetchTranscriptClientSide(videoUrl: string): Promise<{
   const videoId = idMatch?.[1]
   if (!videoId) throw new Error('Invalid YouTube URL')
 
-  // Fetch transcript and metadata in parallel
-  const [transcriptRes, metaRes] = await Promise.all([
-    fetch(`/api/transcript?v=${videoId}`),
-    fetch(`/api/yt-page?v=${videoId}`),
-  ])
+  const res = await fetch(`/api/transcript?v=${videoId}`)
 
-  if (!transcriptRes.ok) {
-    const err = await transcriptRes.json().catch(() => ({ error: 'Unknown error' }))
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Unknown error' }))
     throw new Error(err.error || 'Failed to fetch transcript')
   }
 
-  const transcript = await transcriptRes.json()
-  const meta = metaRes.ok ? await metaRes.json() : { title: 'Unknown', channel: 'Unknown' }
+  const data = await res.json()
 
   return {
     videoId,
-    title: meta.title || 'Unknown',
-    channel: meta.channel || 'Unknown',
-    text: transcript.text,
-    timestamped: transcript.timestamped,
-    language: transcript.language || 'auto',
+    title: data.title || 'Unknown',
+    channel: data.channel || 'Unknown',
+    text: data.text,
+    timestamped: data.timestamped,
+    language: data.language || 'en',
   }
-}
-
-function decodeHtml(str: string): string {
-  return str
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&#x27;/g, "'")
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&#(\d+);/g, (_m, code) => String.fromCharCode(parseInt(code)))
 }
 
 // ── Dashboard Component ──────────────────────────────────────
