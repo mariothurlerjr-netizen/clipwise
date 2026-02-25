@@ -1,9 +1,10 @@
 // POST /api/transcribe
 // Main transcription endpoint — receives a YouTube URL and returns transcript + summary
-// Uses pure JS (no Python) for Vercel compatibility
+// Uses youtube-transcript npm package for reliable server-side caption fetching
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase'
+import { YoutubeTranscript } from 'youtube-transcript'
 
 export const maxDuration = 60
 
@@ -53,7 +54,7 @@ export async function POST(req: NextRequest) {
     // 4. Fetch video metadata via oEmbed
     const metadata = await fetchVideoMetadata(videoId)
 
-    // 5. Fetch transcript using YouTube captions (pure JS)
+    // 5. Fetch transcript using youtube-transcript package
     const transcript = await fetchTranscript(videoId)
 
     // 6. Generate AI summary (if requested and API key available)
@@ -86,7 +87,7 @@ export async function POST(req: NextRequest) {
           transcript_text: transcript.plainText,
           transcript_timestamped: transcript.timestampedText,
           transcript_language: transcript.language,
-          is_auto_generated: transcript.isGenerated,
+          is_auto_generated: true,
           word_count: wordCount,
           summary: summary,
           status: 'completed',
@@ -120,7 +121,7 @@ export async function POST(req: NextRequest) {
         text: transcript.plainText,
         timestamped: transcript.timestampedText,
         language: transcript.language,
-        isGenerated: transcript.isGenerated,
+        isGenerated: true,
         wordCount: transcript.plainText.split(/\s+/).length,
       },
       summary,
@@ -173,124 +174,34 @@ async function fetchTranscript(videoId: string): Promise<{
   plainText: string
   timestampedText: string
   language: string
-  isGenerated: boolean
 }> {
-  // Fetch YouTube video page to extract captions
-  const videoPageRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-      'Accept-Language': 'en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7',
-    },
-  })
-
-  if (!videoPageRes.ok) {
-    throw new Error('Failed to fetch YouTube video page')
-  }
-
-  const html = await videoPageRes.text()
-
-  // Extract captions JSON from page source
-  const captionsRegex = /"captionTracks":\s*(\[.*?\])/
-  const captionsMatch = html.match(captionsRegex)
-
-  if (!captionsMatch) {
-    throw new Error('No captions available for this video. The video may not have subtitles.')
-  }
-
-  let tracks: any[]
   try {
-    tracks = JSON.parse(captionsMatch[1])
-  } catch {
-    throw new Error('Failed to parse captions data')
-  }
+    const segments = await YoutubeTranscript.fetchTranscript(videoId)
 
-  if (!tracks || tracks.length === 0) {
-    throw new Error('No caption tracks available')
-  }
-
-  // Find best caption track
-  const preferredLangs = ['pt', 'en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'zh']
-  let selectedTrack = tracks[0]
-  let isGenerated = selectedTrack.kind === 'asr'
-
-  // Try manual captions first
-  for (const lang of preferredLangs) {
-    const manual = tracks.find((t: any) => t.languageCode === lang && t.kind !== 'asr')
-    if (manual) {
-      selectedTrack = manual
-      isGenerated = false
-      break
+    if (!segments || segments.length === 0) {
+      throw new Error('No transcript segments found')
     }
-  }
 
-  // If still on default, try auto-generated in preferred languages
-  if (selectedTrack === tracks[0]) {
-    for (const lang of preferredLangs) {
-      const auto = tracks.find((t: any) => t.languageCode === lang)
-      if (auto) {
-        selectedTrack = auto
-        isGenerated = auto.kind === 'asr'
-        break
-      }
-    }
-  }
+    const plainText = segments.map((s: any) => s.text.trim()).filter(Boolean).join(' ')
 
-  // Fetch caption XML
-  const captionUrl = selectedTrack.baseUrl
-  const captionRes = await fetch(captionUrl)
-  if (!captionRes.ok) {
-    throw new Error('Failed to fetch caption data')
-  }
-
-  const captionXml = await captionRes.text()
-
-  // Parse XML
-  const segments: Array<{ start: number; dur: number; text: string }> = []
-  const segmentRegex = /<text start="([^"]+)" dur="([^"]+)"[^>]*>([\s\S]*?)<\/text>/g
-  let match
-
-  while ((match = segmentRegex.exec(captionXml)) !== null) {
-    const text = decodeXmlEntities(match[3]).trim()
-    if (text) {
-      segments.push({
-        start: parseFloat(match[1]),
-        dur: parseFloat(match[2]),
-        text,
+    const timestampedText = segments
+      .filter((s: any) => s.text.trim())
+      .map((s: any) => {
+        const totalSeconds = Math.floor(s.offset / 1000)
+        const mins = Math.floor(totalSeconds / 60)
+        const secs = totalSeconds % 60
+        return `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}] ${s.text.trim()}`
       })
+      .join('\n')
+
+    return {
+      plainText,
+      timestampedText,
+      language: 'auto',
     }
+  } catch (error: any) {
+    throw new Error(`Failed to fetch transcript: ${error.message}. The video may not have subtitles available.`)
   }
-
-  if (segments.length === 0) {
-    throw new Error('No transcript segments found')
-  }
-
-  const plainText = segments.map(s => s.text).join(' ')
-  const timestampedText = segments
-    .map(s => {
-      const mins = Math.floor(s.start / 60)
-      const secs = Math.floor(s.start % 60)
-      return `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}] ${s.text}`
-    })
-    .join('\n')
-
-  return {
-    plainText,
-    timestampedText,
-    language: selectedTrack.languageCode,
-    isGenerated,
-  }
-}
-
-function decodeXmlEntities(text: string): string {
-  return text
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/&#(\d+);/g, (_, num) => String.fromCharCode(parseInt(num)))
-    .replace(/\n/g, ' ')
 }
 
 async function generateSummary(text: string, metadata: any, apiKey: string): Promise<string> {

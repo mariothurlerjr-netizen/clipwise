@@ -3,7 +3,8 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 // Types
 interface Transcription {
@@ -32,13 +33,50 @@ export default function DashboardPage() {
   const [transcriptions, setTranscriptions] = useState<Transcription[]>([])
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [activeTranscription, setActiveTranscription] = useState<Transcription | null>(null)
+  const [autoStarted, setAutoStarted] = useState(false)
+  const searchParams = useSearchParams()
 
-  // TODO: Replace with real Supabase queries
-  useEffect(() => {
-    // Fetch user profile and transcription history on mount
-    // const supabase = createBrowserClient()
-    // ...
+  const handleTranscribeAuto = useCallback(async (videoUrl: string) => {
+    setUrl(videoUrl)
+    setLoading(true)
+    try {
+      const res = await fetch('/api/transcribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoUrl, withSummary: true }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      const newItem: Transcription = {
+        id: data.id || crypto.randomUUID(),
+        video_id: data.videoId,
+        title: data.metadata.title,
+        channel_name: data.metadata.channel,
+        thumbnail_url: `https://img.youtube.com/vi/${data.videoId}/mqdefault.jpg`,
+        transcript_language: data.transcript.language,
+        word_count: data.transcript.wordCount,
+        summary: data.summary,
+        status: 'completed',
+        created_at: new Date().toISOString(),
+      }
+      setTranscriptions(prev => [newItem, ...prev])
+      setActiveTranscription(newItem)
+      setUrl('')
+    } catch (err: any) {
+      alert(err.message)
+    } finally {
+      setLoading(false)
+    }
   }, [])
+
+  // Auto-start transcription if URL parameter is present
+  useEffect(() => {
+    const urlParam = searchParams.get('url')
+    if (urlParam && !autoStarted) {
+      setAutoStarted(true)
+      handleTranscribeAuto(urlParam)
+    }
+  }, [searchParams, autoStarted, handleTranscribeAuto])
 
   async function handleTranscribe() {
     if (!url.trim()) return
