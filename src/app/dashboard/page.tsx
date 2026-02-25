@@ -3,7 +3,7 @@
 
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 
 // Types
@@ -27,7 +27,7 @@ interface UserProfile {
   total_videos_processed: number
 }
 
-export default function DashboardPage() {
+function DashboardContent() {
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
   const [transcriptions, setTranscriptions] = useState<Transcription[]>([])
@@ -36,8 +36,7 @@ export default function DashboardPage() {
   const [autoStarted, setAutoStarted] = useState(false)
   const searchParams = useSearchParams()
 
-  const handleTranscribeAuto = useCallback(async (videoUrl: string) => {
-    setUrl(videoUrl)
+  const doTranscribe = useCallback(async (videoUrl: string) => {
     setLoading(true)
     try {
       const res = await fetch('/api/transcribe', {
@@ -47,6 +46,7 @@ export default function DashboardPage() {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
+
       const newItem: Transcription = {
         id: data.id || crypto.randomUUID(),
         video_id: data.videoId,
@@ -74,45 +74,14 @@ export default function DashboardPage() {
     const urlParam = searchParams.get('url')
     if (urlParam && !autoStarted) {
       setAutoStarted(true)
-      handleTranscribeAuto(urlParam)
+      setUrl(urlParam)
+      doTranscribe(urlParam)
     }
-  }, [searchParams, autoStarted, handleTranscribeAuto])
+  }, [searchParams, autoStarted, doTranscribe])
 
   async function handleTranscribe() {
     if (!url.trim()) return
-    setLoading(true)
-
-    try {
-      const res = await fetch('/api/transcribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ videoUrl: url, withSummary: true }),
-      })
-      const data = await res.json()
-
-      if (!res.ok) throw new Error(data.error)
-
-      // Add to history
-      const newItem: Transcription = {
-        id: data.id || crypto.randomUUID(),
-        video_id: data.videoId,
-        title: data.metadata.title,
-        channel_name: data.metadata.channel,
-        thumbnail_url: `https://img.youtube.com/vi/${data.videoId}/mqdefault.jpg`,
-        transcript_language: data.transcript.language,
-        word_count: data.transcript.wordCount,
-        summary: data.summary,
-        status: 'completed',
-        created_at: new Date().toISOString(),
-      }
-      setTranscriptions(prev => [newItem, ...prev])
-      setActiveTranscription(newItem)
-      setUrl('')
-    } catch (err: any) {
-      alert(err.message)
-    } finally {
-      setLoading(false)
-    }
+    await doTranscribe(url.trim())
   }
 
   return (
@@ -121,11 +90,11 @@ export default function DashboardPage() {
       <nav className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-purple-600">ClipWise</span>
+            <a href="/" className="text-2xl font-bold text-purple-600">ClipWise</a>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-500">
-              {profile?.plan === 'free' ? `${profile.credits_remaining} credits left` : profile?.plan?.toUpperCase()}
+              {profile?.plan === 'free' ? `${profile.credits_remaining} credits left` : profile?.plan?.toUpperCase() || 'Free'}
             </span>
             <button className="rounded-lg bg-purple-600 px-4 py-2 text-sm text-white hover:bg-purple-500">
               Upgrade
@@ -226,7 +195,7 @@ export default function DashboardPage() {
         <div className="mt-8">
           <h2 className="text-xl font-bold text-gray-900">Recent transcriptions</h2>
 
-          {transcriptions.length === 0 ? (
+          {transcriptions.length === 0 && !loading ? (
             <div className="mt-4 text-center py-16 bg-white rounded-2xl border border-dashed border-gray-300">
               <p className="text-gray-400 text-lg">No transcriptions yet</p>
               <p className="text-gray-400 text-sm mt-1">Paste a YouTube URL above to get started</p>
@@ -264,5 +233,17 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-400 text-lg">Loading...</div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   )
 }
