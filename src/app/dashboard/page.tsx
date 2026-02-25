@@ -22,8 +22,12 @@ interface TranscriptionResult {
   createdAt: string
 }
 
-// ── Client-side YouTube transcript fetcher ───────────────────
-// Fetches transcript from the user's browser (not blocked by YouTube)
+// ── YouTube transcript fetcher ───────────────────────────────
+// Uses our Python serverless function (/api/transcript) which uses
+// youtube_transcript_api — the only library that reliably bypasses
+// YouTube's anti-bot measures from server-side.
+// Video metadata comes from our Edge function (/api/yt-page).
+
 async function fetchTranscriptClientSide(videoUrl: string): Promise<{
   videoId: string
   title: string
@@ -37,128 +41,28 @@ async function fetchTranscriptClientSide(videoUrl: string): Promise<{
   const videoId = idMatch?.[1]
   if (!videoId) throw new Error('Invalid YouTube URL')
 
-  // Use a CORS proxy to fetch the YouTube page from the browser
-  // We'll try multiple approaches
-  let html = ''
+  // Fetch transcript and metadata in parallel
+  const [transcriptRes, metaRes] = await Promise.all([
+    fetch(`/api/transcript?v=${videoId}`),
+    fetch(`/api/yt-page?v=${videoId}`),
+  ])
 
-  // Approach 1: Try fetching via our own API proxy
-  try {
-    const proxyRes = await fetch(`/api/yt-page?v=${videoId}`)
-    if (proxyRes.ok) {
-      html = await proxyRes.text()
-    }
-  } catch {}
-
-  // Approach 2: If proxy doesn't work, try the AllOrigins CORS proxy
-  if (!html) {
-    try {
-      const corsRes = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/watch?v=${videoId}`)}`)
-      if (corsRes.ok) {
-        html = await corsRes.text()
-      }
-    } catch {}
+  if (!transcriptRes.ok) {
+    const err = await transcriptRes.json().catch(() => ({ error: 'Unknown error' }))
+    throw new Error(err.error || 'Failed to fetch transcript')
   }
 
-  if (!html) {
-    throw new Error('Could not fetch YouTube page. Please try again.')
+  const transcript = await transcriptRes.json()
+  const meta = metaRes.ok ? await metaRes.json() : { title: 'Unknown', channel: 'Unknown' }
+
+  return {
+    videoId,
+    title: meta.title || 'Unknown',
+    channel: meta.channel || 'Unknown',
+    text: transcript.text,
+    timestamped: transcript.timestamped,
+    language: transcript.language || 'auto',
   }
-
-  // Extract video metadata
-  const titleMatch = html.match(/<title>(.*?)\s*-\s*YouTube<\/title>/) || html.match(/"title":"(.*?)"/)
-  const title = titleMatch?.[1]?.replace(/\\"/g, '"') || 'Unknown'
-
-  const channelMatch = html.match(/"author":"(.*?)"/) || html.match(/"ownerChannelName":"(.*?)"/)
-  const channel = channelMatch?.[1] || 'Unknown'
-
-  // Extract caption tracks
-  const captionMatch = html.match(/"captionTracks":\s*(\[.*?\])/)
-  if (!captionMatch) {
-    throw new Error('No captions available for this video. The video may not have subtitles enabled.')
-  }
-
-  let captionTracks: any[]
-  try {
-    captionTracks = JSON.parse(captionMatch[1])
-  } catch {
-    throw new Error('Failed to parse caption data')
-  }
-
-  if (!captionTracks || captionTracks.length === 0) {
-    throw new Error('No caption tracks found')
-  }
-
-  // Select best track (prefer manual over auto-generated)
-  const selectedTrack = captionTracks.find((t: any) => t.kind !== 'asr') || captionTracks[0]
-  const language = selectedTrack.languageCode || 'en'
-
-  // Fetch the actual caption XML from the baseUrl
-  // The baseUrl might have escaped characters
-  let captionUrl = selectedTrack.baseUrl
-  if (!captionUrl) throw new Error('Caption URL not found')
-
-  captionUrl = captionUrl.replace(/\\u0026/g, '&')
-
-  // Fetch captions XML via our proxy
-  let captionXml = ''
-  try {
-    const captionProxyRes = await fetch(`/api/yt-page?url=${encodeURIComponent(captionUrl)}`)
-    if (captionProxyRes.ok) {
-      captionXml = await captionProxyRes.text()
-    }
-  } catch {}
-
-  if (!captionXml) {
-    try {
-      const corsRes = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(captionUrl)}`)
-      if (corsRes.ok) {
-        captionXml = await corsRes.text()
-      }
-    } catch {}
-  }
-
-  if (!captionXml) {
-    throw new Error('Could not fetch caption data. Please try again.')
-  }
-
-  // Parse XML - standard format: <text start="0.0" dur="1.0">text</text>
-  const segments: { text: string; offset: number }[] = []
-  const textRegex = /<text\s+start="([\d.]+)"[^>]*>([\s\S]*?)<\/text>/g
-  let match
-  while ((match = textRegex.exec(captionXml)) !== null) {
-    const offset = Math.floor(parseFloat(match[1]) * 1000)
-    const text = decodeHtml(match[2].replace(/<[^>]+>/g, '').trim())
-    if (text) {
-      segments.push({ text, offset })
-    }
-  }
-
-  // Also try srv3 format: <p t="ms" d="ms">text</p>
-  if (segments.length === 0) {
-    const srv3Regex = /<p\s+t="(\d+)"\s+d="(\d+)"[^>]*>([\s\S]*?)<\/p>/g
-    while ((match = srv3Regex.exec(captionXml)) !== null) {
-      const offset = parseInt(match[1])
-      const text = decodeHtml(match[3].replace(/<[^>]+>/g, '').trim())
-      if (text) {
-        segments.push({ text, offset })
-      }
-    }
-  }
-
-  if (segments.length === 0) {
-    throw new Error('No transcript segments could be extracted from the captions data.')
-  }
-
-  const text = segments.map(s => s.text).join(' ')
-  const timestamped = segments
-    .map(s => {
-      const totalSec = Math.floor(s.offset / 1000)
-      const mins = Math.floor(totalSec / 60)
-      const secs = totalSec % 60
-      return `[${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}] ${s.text}`
-    })
-    .join('\n')
-
-  return { videoId, title, channel, text, timestamped, language }
 }
 
 function decodeHtml(str: string): string {
