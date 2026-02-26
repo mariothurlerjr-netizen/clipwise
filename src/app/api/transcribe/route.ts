@@ -85,6 +85,7 @@ export async function POST(req: NextRequest) {
 
     // Generate AI summary (if requested and API key available)
     let summary = null
+    let summaryError: string | null = null
     const geminiKey = process.env.GEMINI_API_KEY
     const anthropicKey = process.env.ANTHROPIC_API_KEY
     if (withSummary && plainText) {
@@ -93,8 +94,11 @@ export async function POST(req: NextRequest) {
           summary = await generateSummaryGemini(plainText, { title, channel }, geminiKey)
         } else if (anthropicKey && anthropicKey !== 'placeholder') {
           summary = await generateSummary(plainText, { title, channel }, anthropicKey)
+        } else {
+          summaryError = 'No AI key configured (GEMINI_API_KEY or ANTHROPIC_API_KEY)'
         }
-      } catch (e) {
+      } catch (e: any) {
+        summaryError = e.message || 'Unknown summary error'
         console.error('Summary generation failed:', e)
       }
     }
@@ -155,6 +159,7 @@ export async function POST(req: NextRequest) {
         wordCount,
       },
       summary,
+      summaryError,
       processingTimeMs: processingTime,
     })
 
